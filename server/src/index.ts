@@ -8,7 +8,7 @@ app.use(express.json());
 
 const AppDataSource = new DataSource({
   type: "sqlite",
-  database: "database.sqlite",
+  database: process.env.DB_FILE || "database.sqlite", // default if unset or empty string
   entities: [UserEvent],
   synchronize: true,
 });
