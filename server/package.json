@@ -16,7 +16,10 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@tiny-track/common": "file:../common",
     "express": "^4.18.3",
-    "sqlite3": "^5.1.7"
+    "reflect-metadata": "^0.2.1",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20"
   }
 }

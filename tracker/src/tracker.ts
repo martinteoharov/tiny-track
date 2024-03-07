@@ -1,25 +1,8 @@
 import { trackScrollEvent } from "./scroll";
 import { collectPageInfo } from "./page";
+import { EventType, UserEvent } from "@tiny-track/common";
 
 const backendEndpoint = import.meta.env.VITE_BACKEND_ENDPOINT;
-
-export enum EventType {
-  PageView = "page_view",
-  TimeOnPage = "time_on_page",
-  Click = "click",
-  Scroll = "scroll",
-}
-
-interface UserEvent {
-  type: string;
-  timestamp: string;
-  url: string;
-  elementType?: string;
-  elementId?: string;
-  elementClass?: string;
-  maxScrollDepth?: number;
-  duration?: number;
-}
 
 const trackEvent = (eventType: EventType, details: Partial<UserEvent>) => {
   const event: UserEvent = {
