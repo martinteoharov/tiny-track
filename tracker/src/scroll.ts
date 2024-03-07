@@ -1,4 +1,4 @@
-import { EventType } from "@tiny-track/common";
+import { EventType, UserEvent } from "@tiny-track/common";
 
 interface ScrollDetails {
   maxScrollDepth: number;
