@@ -17,6 +17,14 @@ AppDataSource.initialize()
   .then(() => {
     console.log("Connected to Database via TypeORM");
 
+    // This disables XSRF protection for the whole Express server. Do not use cookie auth! 
+    app.use((req, res, next) => {
+      for (const x of ["Origin", "Methods", "Headers"]) {
+        res.setHeader(`Access-Control-Allow-${x}`, "*");
+      }
+      next();
+    })
+    app.options("*", (req, res) => res.sendStatus(200));
     app.post("/track", async (req, res) => {
       try {
         const event = new UserEvent();
