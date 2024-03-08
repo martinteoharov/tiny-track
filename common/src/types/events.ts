@@ -13,4 +13,5 @@ export interface UserEvent {
   elementClass?: string;
   maxScrollDepth?: number;
   duration?: number;
+  referer?: string;
 }

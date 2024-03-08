@@ -3,6 +3,7 @@ import { collectPageInfo } from "./page";
 import { EventType, UserEvent } from "@tiny-track/common";
 
 const backendEndpoint = import.meta.env.VITE_BACKEND_ENDPOINT;
+console.log(backendEndpoint);
 
 const trackEvent = (eventType: EventType, details: Partial<UserEvent>) => {
   const event: UserEvent = {
@@ -31,6 +32,9 @@ const trackEvent = (eventType: EventType, details: Partial<UserEvent>) => {
     });
 };
 
+
+
+
 const trackPageInfo = () => {
   const pageInfo = collectPageInfo();
 
@@ -49,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
   trackEvent("page_view", {
     url: window.location.href,
     timestamp: new Date().toISOString(),
-  });
+    referer: document.referrer,
+      },
+  );
 
   trackPageInfo();
 
