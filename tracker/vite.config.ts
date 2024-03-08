@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   // Configuration options
@@ -10,4 +11,5 @@ export default defineConfig({
     },
     rollupOptions: {},
   },
+  plugins: [dts({ outDir: "dist/types" })]
 });
