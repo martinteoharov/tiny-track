@@ -46,7 +46,7 @@ const trackPageInfo = () => {
 document.addEventListener("DOMContentLoaded", () => {
   const pageVisitTimeStart = Date.now();
 
-  trackEvent(EventType.PageView, {
+  trackEvent("page_view", {
     url: window.location.href,
     timestamp: new Date().toISOString(),
   });
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("beforeunload", () => {
     const pageVisitDuration = Date.now() - pageVisitTimeStart;
-    trackEvent(EventType.TimeOnPage, {
+    trackEvent("time_on_page", {
       duration: pageVisitDuration,
     });
   });
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("click", (e) => {
   if (e.target instanceof Element) {
-    trackEvent(EventType.Click, {
+    trackEvent("click", {
       elementType: e.target.tagName,
       elementId: e.target.id,
       elementClass: e.target.className,

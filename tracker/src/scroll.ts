@@ -35,7 +35,7 @@ export const trackScrollEvent = (
         const details: ScrollDetails = {
           maxScrollDepth: Math.round(maxScrollDepth),
         };
-        trackEvent(EventType.Scroll, details);
+        trackEvent("scroll", details);
       }, debounceDuration);
     }
   };

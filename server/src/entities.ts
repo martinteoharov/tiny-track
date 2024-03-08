@@ -6,10 +6,7 @@ export class UserEvent {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({
-    type: "enum",
-    enum: EventType,
-  })
+  @Column({ type: "text" })
   type!: EventType;
 
   @Column()
