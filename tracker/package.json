@@ -1,8 +1,11 @@
 {
-  "name": "tracker",
+  "name": "tiny-track-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/tiny-track-tracker.umd.cjs",
+  "type": "module",
+  "types": "dist/types/**.d.ts",
+  "module": "dist/tiny-track-tracker.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,8 +16,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "@microsoft/api-extractor": "^7.42.3",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3"
   },
   "dependencies": {
     "@tiny-track/common": "file:../common"
