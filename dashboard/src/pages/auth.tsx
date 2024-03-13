@@ -38,8 +38,12 @@ function App() {
   }
 
   return (
-    <>
-      <Tabs defaultValue="login" className="w-[400px]">
+    <div className="flex items-center justify-center min-h-screen max-h-screen">
+      <Tabs
+        defaultValue="login"
+        className="w-[400px] shadow-lg p-5 bg-white dark:bg-gray-500 rounded-lg"
+      >
+        {" "}
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="login">Login</TabsTrigger>
           <TabsTrigger value="register">Register</TabsTrigger>
@@ -99,7 +103,7 @@ function App() {
           </Form>
         </TabsContent>
       </Tabs>
-    </>
+    </div>
   );
 }
 
