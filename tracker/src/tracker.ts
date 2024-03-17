@@ -33,8 +33,6 @@ const trackEvent = (eventType: EventType, details: Partial<UserEvent>) => {
 };
 
 
-
-
 const trackPageInfo = () => {
   const pageInfo = collectPageInfo();
 
@@ -54,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     url: window.location.href,
     timestamp: new Date().toISOString(),
     referer: document.referrer,
-      },
+  },
   );
 
   trackPageInfo();

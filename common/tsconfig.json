@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es2020",
+    "module": "esnext",
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
@@ -10,5 +10,5 @@
     "forceConsistentCasingInFileNames": true,
     "composite": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*"]
 }
