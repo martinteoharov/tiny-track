@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": "common",
+      "name": "COMMON"
+    },
+    {
+      "path": "tracker",
+      "name": "TRACKER"
+    },
+    {
+      "path": "dashboard",
+      "name": "DASHBOARD"
+    },
+    {
+      "path": "server",
+      "name": "SERVER"
+    },
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.git": true,
+      "**/.DS_Store": true,
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true,
+      "**/.DS_Store": true,
+      "**/.vscode": true,
+      "**/.zed": true,
+      "**/bun.lockb": true
+    },
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+    },
+  },
+}
