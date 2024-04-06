@@ -19,6 +19,7 @@
   ],
   "settings": {
     "editor.formatOnSave": true,
+    "prettier.configPath": ".prettierrc",
     "search.exclude": {
       "**/node_modules": true,
       "**/.git": true,

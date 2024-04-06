@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { UserEvent } from "@tiny-track/common";
 
 export const userEvent = sqliteTable("user_event", {
   id: integer("id").primaryKey(),
