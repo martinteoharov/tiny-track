@@ -32,20 +32,7 @@ const trackEvent = (eventType: EventType, details: Partial<UserEvent>) => {
     });
 };
 
-
-
-
-const trackPageInfo = () => {
-  const pageInfo = collectPageInfo();
-
-  fetch(`${backendEndpoint}/track-page-info`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(pageInfo),
-  });
-};
+// --- Page view tracking ---
 
 document.addEventListener("DOMContentLoaded", () => {
   const pageVisitTimeStart = Date.now();
@@ -54,14 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     url: window.location.href,
     timestamp: new Date().toISOString(),
     referer: document.referrer,
-      },
-  );
-
-  trackPageInfo();
+  });
 
   window.addEventListener("beforeunload", () => {
     const pageVisitDuration = Date.now() - pageVisitTimeStart;
-    trackEvent("time_on_page", {
+    trackEvent("page_exit", {
       duration: pageVisitDuration,
     });
   });

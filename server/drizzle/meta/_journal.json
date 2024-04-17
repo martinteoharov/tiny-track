@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1710618653802,
+      "tag": "0000_ambitious_karen_page",
+      "breakpoints": true
+    }
+  ]
+}
