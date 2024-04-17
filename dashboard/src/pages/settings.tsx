@@ -1,4 +1,4 @@
-function Dashboard() {
+function Settings() {
   return (
     <div className="min-h-screen p-20">
       <div className="mt-10 text-2xl font-bold">Dashboard</div>
@@ -7,4 +7,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Settings;
