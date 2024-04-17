@@ -9,3 +9,10 @@ CREATE TABLE `user_event` (
 	`maxScrollDepth` integer,
 	`duration` integer
 );
+--> statement-breakpoint
+CREATE TABLE `users` (
+	`email` text PRIMARY KEY NOT NULL,
+	`uuid` integer,
+	`password` text NOT NULL,
+	`telegram_key` text
+);

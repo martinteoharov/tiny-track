@@ -8,24 +8,36 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  LoginRequest,
+  RegisterRequest,
+  loginUser,
+  registerUser,
+} from "@/api/auth";
+import { useEffect, useState } from "react";
 
-const formSchema = z.object({
-  email: z.string().min(8, {
-    message: "Username must be at least 8 characters.",
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-});
+const formSchema = z
+  .object({
+    email: z.string().email({ message: "Invalid email address." }),
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters." }),
+    repeatPassword: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters." }),
+  })
+  .refine((data) => data.password === data.repeatPassword, {
+    message: "Passwords do not match.",
+    path: ["repeatPassword"],
+  });
 
 function App() {
+  const [activeTab, setActiveTab] = useState("login");
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,15 +45,35 @@ function App() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: any) => {
+    try {
+      console.log(form.formState);
+      console.log(activeTab);
+      if (activeTab === "login") {
+        const data = await loginUser({
+          email: values.email,
+          password: values.password,
+        });
+        console.log("Login success:", data);
+        localStorage.setItem("token", data.token);
+      } else {
+        await registerUser({ email: values.email, password: values.password });
+        console.log("Registration success");
+      }
+    } catch (error: any) {
+      console.error("Error:", error.message);
+    }
+  };
+  useEffect(() => {
+    console.log("Active tab is now:", activeTab);
+  }, [activeTab]);
 
   return (
     <div className="flex items-center justify-center min-h-screen max-h-screen">
       <Tabs
         defaultValue="login"
         className="w-[400px] shadow-lg p-5 bg-white dark:bg-gray-500 rounded-lg"
+        onValueChange={(value) => setActiveTab(value)}
       >
         {" "}
         <TabsList className="grid w-full grid-cols-2">
@@ -108,13 +140,19 @@ function App() {
               />
               <FormField
                 control={form.control}
-                name="repeat password"
-                render={({ field }) => (
+                name="repeatPassword"
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input placeholder="repeat password" {...field} />
+                      <Input
+                        type="password"
+                        placeholder="Repeat password"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    {fieldState.error && (
+                      <FormMessage>{fieldState.error.message}</FormMessage>
+                    )}
                   </FormItem>
                 )}
               />

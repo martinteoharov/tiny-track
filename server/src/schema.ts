@@ -12,3 +12,10 @@ export const userEvent = sqliteTable("user_event", {
   maxScrollDepth: integer("maxScrollDepth"),
   duration: integer("duration"),
 });
+
+export const users = sqliteTable("users", {
+  email: text("email").primaryKey(),
+  uuid: integer("uuid"),
+  password: text("password").notNull(),
+  telegram_key: text("telegram_key"),
+});
